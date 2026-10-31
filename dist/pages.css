@@ -41,11 +41,16 @@
 }
 
 html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   scroll-behavior: smooth;
   background: var(--paper);
 }
 
 body {
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   background: var(--paper);
   color: var(--carbon);
@@ -1057,10 +1062,18 @@ textarea {
 
   .inner-header {
     top: 10px;
-    width: calc(100% - 20px);
+    right: 10px;
+    left: 10px;
+    width: auto;
     min-height: 58px;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 0.45rem;
     padding: 0.38rem 0.4rem 0.38rem 0.72rem;
+    transform: none;
+  }
+
+  .inner-brand {
+    min-width: 0;
   }
 
   .inner-brand span {

@@ -39,11 +39,16 @@
 }
 
 html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   color-scheme: light;
   scroll-behavior: smooth;
 }
 
 body {
+  width: 100%;
+  max-width: 100%;
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
@@ -90,13 +95,15 @@ button:focus-visible,
   z-index: 10001;
   top: clamp(0.75rem, 2.3vw, 1.5rem);
   left: 0;
-  width: 100%;
+  right: 0;
+  width: auto;
   padding-inline: var(--header-gutter);
   pointer-events: none;
 }
 
 .nav-shell {
-  width: min(100%, var(--content-width));
+  width: 100%;
+  max-width: var(--content-width);
   min-height: 66px;
   margin-inline: auto;
   padding: 0.55rem 0.58rem 0.55rem 1.35rem;
@@ -989,13 +996,28 @@ button:focus-visible,
 }
 
 @media (max-width: 700px) {
+  .site-header {
+    padding-inline: 0.75rem;
+  }
+
   .nav-shell {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     min-height: 60px;
+    gap: 0.65rem;
     padding: 0.45rem 0.48rem 0.45rem 1rem;
   }
 
   .brand {
+    flex: 1 1 auto;
+    overflow: hidden;
     font-size: 0.9rem;
+  }
+
+  .brand span {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .brand-logo {
@@ -1005,6 +1027,15 @@ button:focus-visible,
 
   .header-cta {
     display: none;
+  }
+
+  .header-actions,
+  .menu-toggle {
+    flex: 0 0 auto;
+  }
+
+  .header-actions {
+    gap: 0;
   }
 
   .menu-toggle__label {
