@@ -16,3 +16,6 @@ node build-pages.mjs
 
 Serve the `dist` directory with any static web server.
 
+## Vercel
+
+The included `vercel.json` runs the page builder and publishes `dist`.
