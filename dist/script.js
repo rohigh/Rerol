@@ -243,6 +243,7 @@
   if (!section) return;
 
   const stage = section.querySelector(".process-journey__stage");
+  const desktopClip = section.querySelector("[data-process-clip]");
   const steps = section.querySelectorAll("[data-process-step]");
   const counter = section.querySelector("[data-process-counter]");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -287,6 +288,7 @@
     }
 
     section.style.setProperty("--process-progress", progress.toFixed(4));
+    desktopClip.setAttribute("width", String(1200 * progress));
     setActive(Math.min(steps.length - 1, Math.floor(progress * steps.length)));
   };
 

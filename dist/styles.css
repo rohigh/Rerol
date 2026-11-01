@@ -2792,8 +2792,6 @@ button:focus-visible,
 
 .process-journey__line-progress {
   stroke: var(--papaya);
-  stroke-dasharray: var(--process-progress, 0) 1;
-  stroke-dashoffset: 0;
 }
 
 .process-journey__steps {

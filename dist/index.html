@@ -24,7 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=9" />
+    <link rel="stylesheet" href="./styles.css?v=10" />
   </head>
   <body>
     <header class="site-header" aria-label="Site header">
@@ -553,6 +553,11 @@
               preserveAspectRatio="none"
               aria-hidden="true"
             >
+              <defs>
+                <clipPath id="process-progress-clip" clipPathUnits="userSpaceOnUse">
+                  <rect data-process-clip x="0" y="0" width="0" height="430" />
+                </clipPath>
+              </defs>
               <path
                 class="process-journey__line-base"
                 d="M40 118 C180 18 310 24 342 142 C382 292 526 322 610 188 C708 32 828 24 888 138 C956 268 1030 336 1160 214"
@@ -560,7 +565,7 @@
               <path
                 class="process-journey__line-progress"
                 data-process-path
-                pathLength="1"
+                clip-path="url(#process-progress-clip)"
                 d="M40 118 C180 18 310 24 342 142 C382 292 526 322 610 188 C708 32 828 24 888 138 C956 268 1030 336 1160 214"
               />
             </svg>
@@ -996,6 +1001,6 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=9"></script>
+    <script src="./script.js?v=10"></script>
   </body>
 </html>
