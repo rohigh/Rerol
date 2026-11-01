@@ -239,6 +239,71 @@
 })();
 
 (() => {
+  const section = document.querySelector("[data-process-journey]");
+  if (!section) return;
+
+  const stage = section.querySelector(".process-journey__stage");
+  const steps = section.querySelectorAll("[data-process-step]");
+  const counter = section.querySelector("[data-process-counter]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const desktop = window.matchMedia("(min-width: 901px)");
+  let activeIndex = -1;
+  let ticking = false;
+
+  const clamp = (value) => Math.min(1, Math.max(0, value));
+
+  const setActive = (nextIndex) => {
+    if (nextIndex === activeIndex) return;
+    activeIndex = nextIndex;
+
+    for (let index = 0; index < steps.length; index += 1) {
+      const step = steps[index];
+      const isActive = index === activeIndex;
+      step.classList.toggle("is-active", isActive);
+      step.classList.toggle("is-complete", index < activeIndex);
+
+      if (isActive) step.setAttribute("aria-current", "step");
+      else step.removeAttribute("aria-current");
+    }
+
+    counter.textContent = `${String(activeIndex + 1).padStart(2, "0")} / 04`;
+  };
+
+  const update = () => {
+    ticking = false;
+
+    let progress = 1;
+    if (!reducedMotion.matches) {
+      if (desktop.matches) {
+        const rect = section.getBoundingClientRect();
+        const distance = Math.max(1, section.offsetHeight - window.innerHeight);
+        progress = clamp(-rect.top / distance);
+      } else {
+        const rect = stage.getBoundingClientRect();
+        const start = window.innerHeight * 0.72;
+        const end = window.innerHeight * 0.28;
+        progress = clamp((start - rect.top) / (rect.height + start - end));
+      }
+    }
+
+    section.style.setProperty("--process-progress", progress.toFixed(4));
+    setActive(Math.min(steps.length - 1, Math.floor(progress * steps.length)));
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(update);
+  };
+
+  update();
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate);
+  reducedMotion.addEventListener("change", requestUpdate);
+  desktop.addEventListener("change", requestUpdate);
+})();
+
+(() => {
   const section = document.querySelector("[data-card-stack]");
   if (!section) return;
 

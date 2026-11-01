@@ -161,11 +161,11 @@ function footer() {
       <span>© <span data-current-year></span> Rerol Refinery Private Limited</span>
       <a href="/contact/">Contact our team <span aria-hidden="true">↗</span></a>
     </div>
-  </footer>
-  <nav class="mobile-contact-bar" aria-label="Quick contact">
-    <a href="${phoneHref}">Call</a>
-    <a href="${whatsappHref}">WhatsApp</a>
-  </nav>`;
+    <nav class="mobile-contact-bar" aria-label="Quick contact">
+      <a href="${phoneHref}">Call now</a>
+      <a href="${whatsappHref}">WhatsApp</a>
+    </nav>
+  </footer>`;
 }
 
 export function renderPage(page) {
@@ -185,7 +185,7 @@ export function renderPage(page) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/pages.css?v=3" />
+    <link rel="stylesheet" href="/pages.css?v=4" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
