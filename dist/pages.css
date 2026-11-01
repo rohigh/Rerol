@@ -1234,3 +1234,18 @@ textarea {
   .inner-brand img { width:32px; height:32px; }
   .quote-link { display:none; }
 }
+
+@media(min-width:1101px) {
+.inner-header { width:96%; grid-template-columns:auto 1fr auto; gap:1rem; padding-inline:1.1rem; }
+.inner-nav { justify-content:space-evenly; gap:.65rem; }
+.inner-nav a { font-size:clamp(.66rem,.78vw,.85rem); }
+.inner-header__actions { display:flex; }
+.mobile-nav { display:none; }
+.quote-link { white-space:nowrap; }
+}
+@media(min-width:1101px) and (max-width:1399px) {
+.inner-header { grid-template-columns:1fr auto; border-radius:26px; gap:.2rem 1rem; }
+.inner-nav { grid-column:1 / -1; grid-row:2; justify-content:space-between; }
+.inner-header__actions { grid-column:2; grid-row:1; }
+.page-hero { padding-top:11rem; }
+}

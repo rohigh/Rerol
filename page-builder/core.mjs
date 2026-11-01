@@ -3,13 +3,56 @@ export const phoneHref = "tel:+919176642399";
 export const whatsappHref = "https://wa.me/919176642399?text=Hi%20Rerol%2C%20I%27d%20like%20today%27s%20rate.%20Product%3A%20___%20Quantity%3A%20___%20Delivery%20location%3A%20___";
 
 const navItems = [
-  ["home","Home","/"],
-  ["about","About Rerol","/about/"],
-  ["products","Products","/products/"],
-  ["industries","Industries Served","/industries/"],
-  ["collection","Used Oil Collection","/services/used-oil-collection/"],
-  ["quality","Quality &amp; Testing","/services/testing-and-documentation/"],
-  ["contact","Contact / Request Quote","/contact/"],
+  [
+    "home",
+    "Home",
+    "/"
+  ],
+  [
+    "about",
+    "About",
+    "/about/"
+  ],
+  [
+    "products",
+    "Products",
+    "/products/"
+  ],
+  [
+    "services",
+    "Services",
+    "/services/"
+  ],
+  [
+    "industries",
+    "Industries Served",
+    "/industries/"
+  ],
+  [
+    "collection",
+    "Used Oil Collection",
+    "/services/used-oil-collection/"
+  ],
+  [
+    "blog",
+    "Blog",
+    "/blog/"
+  ],
+  [
+    "quality",
+    "Quality and Testing",
+    "/services/testing-and-documentation/"
+  ],
+  [
+    "gallery",
+    "Gallery",
+    "/gallery/"
+  ],
+  [
+    "contact",
+    "Contact",
+    "/contact/"
+  ]
 ];
 
 const linkMarkup = (active) => navItems
@@ -185,7 +228,7 @@ export function renderPage(page) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/pages.css?v=7" />
+    <link rel="stylesheet" href="/pages.css?v=8" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
