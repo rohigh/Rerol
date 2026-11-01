@@ -4360,3 +4360,26 @@ button:focus-visible,
     animation: none !important;
   }
 }
+
+/* Always-visible primary navigation, including compact screens. */
+.nav-shell { gap: 1rem; background: rgba(244, 245, 246, 0.96); }
+.primary-nav { display: flex; align-items: center; justify-content: center; gap: clamp(.65rem, 1.4vw, 1.25rem); }
+.primary-nav a { padding: .7rem 0; color: #424b50; font-size: .8rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.primary-nav a:hover, .primary-nav a[aria-current="page"] { color: #ad5200; }
+.primary-nav a:focus-visible { outline: 2px solid #ff8500; outline-offset: 3px; border-radius: 4px; }
+.brand, .header-actions { flex-shrink: 0; }
+@media (max-width: 1100px) {
+  .nav-shell { display: grid; grid-template-columns: 1fr auto; gap: .3rem 1rem; border-radius: 24px; padding: .65rem 1rem; }
+  .primary-nav { grid-column: 1 / -1; grid-row: 2; flex-wrap: wrap; column-gap: 1.4rem; row-gap: 0; border-top: 1px solid rgba(30,35,40,.1); padding-top: .2rem; }
+  .header-actions { grid-column: 2; grid-row: 1; }
+  .photo-hero__layout { padding-top: 11rem; }
+}
+@media (max-width: 700px) {
+  .nav-shell { padding: .5rem .7rem; }
+  .primary-nav { column-gap: 1.1rem; }
+  .primary-nav a { font-size: .75rem; padding: .65rem 0; min-height: 40px; }
+  .header-cta { display: inline-flex; font-size: .7rem; padding: .55rem .65rem; }
+  .brand { font-size: .8rem; gap: .4rem; }
+  .brand-logo { width: 32px; height: 32px; }
+  .photo-hero__layout { padding-top: 12rem; }
+}

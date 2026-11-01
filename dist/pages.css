@@ -1216,3 +1216,21 @@ textarea {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Keep the same visible navigation on every page and screen size. */
+@media (max-width: 1100px) {
+  .inner-header { grid-template-columns: 1fr auto; gap: .3rem 1rem; border-radius: 24px; padding: .65rem 1rem; }
+  .inner-nav { display: flex; grid-column: 1 / -1; grid-row: 2; flex-wrap: wrap; column-gap: 1.4rem; row-gap: 0; border-top: 1px solid rgba(30,35,40,.1); padding-top: .2rem; }
+  .inner-nav a { min-height: 40px; padding: .65rem 0; }
+  .inner-header__actions { grid-column: 2; grid-row: 1; }
+  .page-hero { padding-top: 12rem; }
+}
+@media (max-width: 680px) {
+  .inner-header { padding: .5rem .7rem; }
+  .inner-brand { font-size: .8rem; gap: .4rem; }
+  .inner-brand span { display: inline; }
+  .inner-brand img { width: 32px; height: 32px; }
+  .inner-nav { column-gap: 1.1rem; }
+  .inner-nav a { font-size: .75rem; }
+  .quote-link { padding: .55rem .65rem; font-size: .7rem; }
+}

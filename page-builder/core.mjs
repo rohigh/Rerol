@@ -119,10 +119,6 @@ function header(active) {
     <nav class="inner-nav" aria-label="Primary navigation">${linkMarkup(active)}</nav>
     <div class="inner-header__actions">
       <a class="quote-link" href="/contact/">Get a quote</a>
-      <details class="mobile-nav">
-        <summary aria-label="Open navigation">Menu</summary>
-        <nav class="mobile-nav__panel" aria-label="Mobile navigation">${linkMarkup(active)}</nav>
-      </details>
     </div>
   </header>`;
 }
@@ -185,7 +181,7 @@ export function renderPage(page) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/pages.css?v=5" />
+    <link rel="stylesheet" href="/pages.css?v=6" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
