@@ -4379,10 +4379,10 @@ button:focus-visible,
 }
 
 @media(min-width:1101px) {
-.site-header { padding-inline:2vw; }
-.nav-shell { max-width:none; gap:1rem; padding-inline:1.1rem; }
-.primary-nav { flex:1; justify-content:space-evenly; gap:.65rem; }
-.primary-nav a { font-size:clamp(.66rem,.78vw,.85rem); }
+.site-header { padding-inline:var(--header-gutter); }
+.nav-shell { max-width:var(--content-width); gap:1rem; padding-inline:1.1rem; }
+.primary-nav { flex:1; justify-content:space-between; gap:.55rem; }
+.primary-nav a { font-size:.7rem; }
 .header-actions { display:flex; flex-shrink:0; }
 .menu-toggle { display:none; }
 .header-cta { display:inline-flex; white-space:nowrap; background:var(--sky-blue); color:var(--carbon); }
