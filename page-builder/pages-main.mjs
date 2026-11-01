@@ -123,7 +123,7 @@ export const mainPages = [
   },
   {
     path: "industries",
-    active: "products",
+    active: "industries",
     title: "Industries We Serve | Rerol Refinery",
     description: "Industrial fuel, base oil and used oil services for manufacturing, workshops, power, engineering and process plants.",
     kicker: "Industries",

@@ -1,6 +1,168 @@
-window.requestAnimationFrame(() => {
-  document.documentElement.classList.add("hero-ready");
-});
+(() => {
+  const body = document.body;
+  const overlay = document.querySelector("#nav-overlay");
+  const menuButton = document.querySelector(".menu-toggle");
+  const quoteButton = document.querySelector(".header-cta");
+  const main = document.querySelector("main");
+  const menuList = document.querySelector(".menu-list");
+  const menuLinks = [...document.querySelectorAll(".menu-link")];
+  const overlayLinks = [...overlay.querySelectorAll("a[href]")];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  window.requestAnimationFrame(() => {
+    document.documentElement.classList.add("hero-ready");
+  });
+
+  let isOpen = false;
+  let isClosing = false;
+  let closeDelay;
+  let finishDelay;
+
+  const transitionTime = () => (reducedMotion.matches ? 0 : 720);
+
+  const setBackgroundPaused = (paused) => {
+    window.dispatchEvent(
+      new CustomEvent("rerol:menu-activity", { detail: { paused } }),
+    );
+  };
+
+  const setRevealOrigin = () => {
+    const rect = menuButton.getBoundingClientRect();
+    const x = Math.round(rect.right - 20);
+    const y = Math.round(rect.top + rect.height / 2);
+
+    overlay.style.setProperty("--reveal-x", `${x}px`);
+    overlay.style.setProperty("--reveal-y", `${y}px`);
+  };
+
+  const focusableItems = () => [menuButton, ...overlayLinks];
+
+  const openMenu = () => {
+    if (isOpen || isClosing) return;
+
+    window.clearTimeout(closeDelay);
+    window.clearTimeout(finishDelay);
+    isOpen = true;
+    setBackgroundPaused(true);
+    setRevealOrigin();
+
+    overlay.hidden = false;
+    main.inert = true;
+    quoteButton.setAttribute("tabindex", "-1");
+    body.classList.add("nav-visible", "nav-locked");
+    menuButton.setAttribute("aria-expanded", "true");
+    menuButton.setAttribute("aria-label", "Close menu");
+
+    window.requestAnimationFrame(() => {
+      overlay.classList.add("is-open");
+      body.classList.add("nav-open");
+      window.setTimeout(() => overlay.focus({ preventScroll: true }), reducedMotion.matches ? 0 : 80);
+    });
+  };
+
+  const finishClose = () => {
+    overlay.hidden = true;
+    overlay.classList.remove("is-open");
+    body.classList.remove("nav-visible", "nav-locked");
+    main.inert = false;
+    quoteButton.removeAttribute("tabindex");
+    isClosing = false;
+    isOpen = false;
+    body.classList.remove("nav-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open menu");
+    setBackgroundPaused(false);
+    menuButton.focus({ preventScroll: true });
+  };
+
+  const closeMenu = ({ restoreFocus = true } = {}) => {
+    if (!isOpen || isClosing) return;
+
+    isOpen = false;
+    isClosing = true;
+    body.classList.remove("nav-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open menu");
+
+    const iconPhase = reducedMotion.matches ? 0 : 180;
+    closeDelay = window.setTimeout(() => {
+      overlay.classList.remove("is-open");
+      finishDelay = window.setTimeout(() => {
+        finishClose();
+        if (!restoreFocus) menuButton.blur();
+      }, transitionTime());
+    }, iconPhase);
+  };
+
+  const handleFocusTrap = (event) => {
+    if (!isOpen || event.key !== "Tab") return;
+
+    const items = focusableItems();
+    const firstOverlayLink = items[1];
+    const last = items[items.length - 1];
+    const active = document.activeElement;
+
+    if (active === overlay) {
+      event.preventDefault();
+      (event.shiftKey ? menuButton : firstOverlayLink).focus();
+      return;
+    }
+
+    if (event.shiftKey && active === menuButton) {
+      event.preventDefault();
+      last.focus();
+      return;
+    }
+
+    if (!event.shiftKey && active === menuButton) {
+      event.preventDefault();
+      firstOverlayLink.focus();
+      return;
+    }
+
+    if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      menuButton.focus();
+    }
+  };
+
+  menuButton.addEventListener("click", () => {
+    if (isOpen) closeMenu();
+    else openMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isOpen) {
+      event.preventDefault();
+      closeMenu();
+      return;
+    }
+
+    handleFocusTrap(event);
+  });
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("pointerenter", (event) => {
+      if (event.pointerType && event.pointerType !== "mouse") return;
+      menuList.dataset.hovered = "true";
+      link.classList.add("is-hovered");
+    });
+
+    link.addEventListener("pointerleave", () => {
+      delete menuList.dataset.hovered;
+      link.classList.remove("is-hovered");
+    });
+  });
+
+  overlayLinks.forEach((link) => {
+    link.addEventListener("click", () => closeMenu({ restoreFocus: false }));
+  });
+
+  window.addEventListener("resize", () => {
+    if (isOpen && window.innerWidth > 1100) finishClose();
+    else if (isOpen) setRevealOrigin();
+  });
+})();
 
 (() => {
   const loadPatternWaves = () => {

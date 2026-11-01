@@ -3,13 +3,13 @@ export const phoneHref = "tel:+919176642399";
 export const whatsappHref = "https://wa.me/919176642399?text=Hi%20Rerol%2C%20I%27d%20like%20today%27s%20rate.%20Product%3A%20___%20Quantity%3A%20___%20Delivery%20location%3A%20___";
 
 const navItems = [
-  ["home", "Home", "/"],
-  ["about", "About", "/about/"],
-  ["products", "Products", "/products/"],
-  ["services", "Services", "/services/"],
-  ["blog", "Blog", "/blog/"],
-  ["gallery", "Gallery", "/gallery/"],
-  ["contact", "Contact", "/contact/"],
+  ["home","Home","/"],
+  ["about","About Rerol","/about/"],
+  ["products","Products","/products/"],
+  ["industries","Industries Served","/industries/"],
+  ["collection","Used Oil Collection","/services/used-oil-collection/"],
+  ["quality","Quality &amp; Testing","/services/testing-and-documentation/"],
+  ["contact","Contact / Request Quote","/contact/"],
 ];
 
 const linkMarkup = (active) => navItems
@@ -119,6 +119,10 @@ function header(active) {
     <nav class="inner-nav" aria-label="Primary navigation">${linkMarkup(active)}</nav>
     <div class="inner-header__actions">
       <a class="quote-link" href="/contact/">Get a quote</a>
+      <details class="mobile-nav">
+        <summary aria-label="Open navigation">Menu</summary>
+        <nav class="mobile-nav__panel" aria-label="Mobile navigation">${linkMarkup(active)}</nav>
+      </details>
     </div>
   </header>`;
 }
@@ -181,7 +185,7 @@ export function renderPage(page) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/pages.css?v=6" />
+    <link rel="stylesheet" href="/pages.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>

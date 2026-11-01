@@ -24,7 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=13" />
+    <link rel="stylesheet" href="./styles.css?v=14" />
   </head>
   <body>
     <header class="site-header" aria-label="Site header">
@@ -36,18 +36,73 @@
 
         <nav class="primary-nav" aria-label="Primary navigation">
           <a href="/" aria-current="page">Home</a>
-          <a href="/about/">About</a>
+          <a href="/about/">About Rerol</a>
           <a href="/products/">Products</a>
-          <a href="/services/">Services</a>
-          <a href="/blog/">Blog</a>
-          <a href="/gallery/">Gallery</a>
-          <a href="/contact/">Contact</a>
+          <a href="/industries/">Industries Served</a>
+          <a href="/services/used-oil-collection/">Used Oil Collection</a>
+          <a href="/services/testing-and-documentation/">Quality &amp; Testing</a>
+          <a href="/contact/">Contact / Request Quote</a>
         </nav>
         <div class="header-actions">
           <a class="header-cta" href="/contact/">Get a quote</a>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-controls="nav-overlay"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <span class="menu-toggle__label" aria-hidden="true">
+              <span class="menu-toggle__label-open">Menu</span>
+              <span class="menu-toggle__label-close">Close</span>
+            </span>
+            <span class="menu-toggle__icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+          </button>
         </div>
       </div>
     </header>
+
+    <div
+      class="nav-overlay"
+      id="nav-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="nav-overlay-title"
+      tabindex="-1"
+      hidden
+    >
+      <h2 class="sr-only" id="nav-overlay-title">Main menu</h2>
+      <div class="nav-overlay__glow" aria-hidden="true"></div>
+
+      <div class="nav-overlay__inner">
+        <nav class="overlay-navigation" aria-label="Main navigation">
+          <ol class="menu-list"><li style="--item-index: 0"><a class="menu-link" href="/"><span class="menu-link__number">01</span><span>Home</span></a></li>
+<li style="--item-index: 1"><a class="menu-link" href="/about/"><span class="menu-link__number">02</span><span>About Rerol</span></a></li>
+<li style="--item-index: 2"><a class="menu-link" href="/products/"><span class="menu-link__number">03</span><span>Products</span></a></li>
+<li style="--item-index: 3"><a class="menu-link" href="/industries/"><span class="menu-link__number">04</span><span>Industries Served</span></a></li>
+<li style="--item-index: 4"><a class="menu-link" href="/services/used-oil-collection/"><span class="menu-link__number">05</span><span>Used Oil Collection</span></a></li>
+<li style="--item-index: 5"><a class="menu-link" href="/services/testing-and-documentation/"><span class="menu-link__number">06</span><span>Quality &amp; Testing</span></a></li>
+<li style="--item-index: 6"><a class="menu-link" href="/contact/"><span class="menu-link__number">07</span><span>Contact / Request Quote</span></a></li></ol>
+        </nav>
+
+        <div class="overlay-footer">
+          <a class="overlay-footer__cta" href="/contact/">
+            Get today&rsquo;s rate
+            <span aria-hidden="true">&nearr;</span>
+          </a>
+
+          <ul class="quick-links" aria-label="Product links">
+            <li><a href="/products/furnace-oil/">Furnace oil</a></li>
+            <li><a href="/products/light-diesel-oil/">LDO</a></li>
+            <li><a href="/products/re-refined-base-oil/">Base oil</a></li>
+            <li><a href="tel:+919176642399">Call sales</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <main>
     <section class="photo-hero" id="home" aria-labelledby="hero-title">
@@ -919,6 +974,6 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=12"></script>
+    <script src="./script.js?v=13"></script>
   </body>
 </html>

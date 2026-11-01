@@ -155,7 +155,7 @@ export const detailPages = [
   },
   {
     path: "services/used-oil-collection",
-    active: "services",
+    active: "collection",
     title: "Used Oil Collection in Chennai | Rerol Refinery",
     description: "Arrange used oil pickup from factories, workshops, fleets and industrial sites with sample testing and documentation.",
     kicker: "Used oil collection",
@@ -222,10 +222,10 @@ export const detailPages = [
   },
   {
     path: "services/testing-and-documentation",
-    active: "services",
-    title: "Industrial Oil Testing and Documentation | Rerol Refinery",
+    active: "quality",
+    title: "Quality & Testing | Rerol Refinery",
     description: "Certificate of Analysis, batch testing, GST invoice and supporting collection documentation for Rerol oil supply.",
-    kicker: "Testing and documentation",
+    kicker: "Quality &amp; Testing",
     headline: "Every batch tested. Every order documented.",
     intro: "The team checks each batch before dispatch and provides the documents your plant, procurement and audit teams need to review the order.",
     heroImage: "/assets/why-quality.jpg",
