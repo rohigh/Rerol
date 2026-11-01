@@ -51,7 +51,7 @@ body {
   max-width: 100%;
   min-width: 320px;
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--silver-mist);
   color: var(--carbon);
   font-family: "Inter", Arial, sans-serif;
@@ -4314,20 +4314,6 @@ button:focus-visible,
   .process-journey__steps > li,
   .process-journey__marker {
     transition: none !important;
-  }
-
-  .process-journey {
-    height: auto;
-    min-height: 0;
-  }
-
-  .process-journey__sticky {
-    min-height: 100vh;
-    position: relative;
-  }
-
-  .process-journey__line-progress {
-    stroke-dashoffset: 0 !important;
   }
 
   .applications-stack {

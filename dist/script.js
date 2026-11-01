@@ -273,8 +273,7 @@
   const update = () => {
     ticking = false;
 
-    let progress = 1;
-    if (!reducedMotion.matches) {
+    let progress;
       if (desktop.matches) {
         const rect = section.getBoundingClientRect();
         const distance = Math.max(1, section.offsetHeight - window.innerHeight);
@@ -285,8 +284,6 @@
         const end = window.innerHeight * 0.28;
         progress = clamp((start - rect.top) / (rect.height + start - end));
       }
-    }
-
     section.style.setProperty("--process-progress", progress.toFixed(4));
     desktopClip.setAttribute("width", String(1200 * progress));
     setActive(Math.min(steps.length - 1, Math.floor(progress * steps.length)));
