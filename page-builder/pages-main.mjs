@@ -69,6 +69,7 @@ export const mainPages = [
           ${featureCard({ image: "/assets/product-furnace.jpg", eyebrow: "01 / Industrial fuel", title: "Furnace oil", text: "Steady heat for boilers, furnaces, kilns and thermic fluid heaters.", href: "/products/furnace-oil/", label: "View furnace oil" })}
           ${featureCard({ image: "/assets/product-ldo.jpg", eyebrow: "02 / Industrial fuel", title: "Light diesel oil (LDO)", text: "For burners, heaters and process heating where steady combustion matters.", href: "/products/light-diesel-oil/", label: "View LDO" })}
           ${featureCard({ image: "/assets/product-base-oil.jpg", eyebrow: "03 / Raw material", title: "Re-refined base oil", text: "For lubricant, grease, hydraulic oil and industrial fluid makers.", href: "/products/re-refined-base-oil/", label: "View base oil" })}
+          ${featureCard({ image: "/assets/product-furnace.jpg", eyebrow: "04 / Provisional grade", title: "Distilled fuel oil (DFO)", text: "Proposed furnace and burner fuel targets. Laboratory validation pending; confirm classification and permitted end use.", href: "/products/distilled-fuel-oil/", label: "Review DFO targets" })}
         </div>
       </section>
       <section class="page-section page-section--dark">

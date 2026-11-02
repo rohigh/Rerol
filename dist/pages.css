@@ -1249,3 +1249,15 @@ textarea {
 .inner-header__actions { grid-column:2; grid-row:1; }
 .page-hero { padding-top:11rem; }
 }
+
+.product-specifications { scroll-margin-top: 140px; }
+.product-specifications h2 { margin: 1rem 0 1.5rem; font-size: clamp(2rem,4vw,3.5rem); }
+.product-specifications h3 { margin: 2.5rem 0 1rem; font-size: clamp(1.2rem,2vw,1.65rem); }
+.specification-status { padding: 1.25rem; border-left: 4px solid var(--papaya); background: rgba(255,133,0,.09); border-radius: 0 12px 12px 0; line-height: 1.7; }
+.specification-meta { font-size: .8rem; color: #59636c; margin: 1.25rem 0; }
+.specification-note { margin: 1rem 0; line-height: 1.7; overflow-wrap: anywhere; }
+.product-specifications .data-table-wrap { margin: 1.25rem 0 2rem; }
+.product-specifications .data-table { min-width: 720px; }
+.specification-links { padding-left: 1.25rem; line-height: 1.7; }
+.specification-links li { margin: .85rem 0; }
+.specification-links a { text-underline-offset: .2em; }

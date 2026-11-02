@@ -6,10 +6,39 @@ import { renderPage } from "./page-builder/core.mjs";
 import { mainPages } from "./page-builder/pages-main.mjs";
 import { detailPages } from "./page-builder/pages-details.mjs";
 import { articlePages } from "./page-builder/pages-articles.mjs";
+import { specificationSection, specificationLinks } from "./page-builder/specifications.mjs";
 
 const siteDirectory = path.dirname(fileURLToPath(import.meta.url));
 const outputDirectory = path.join(siteDirectory, "dist");
 const pages = [...mainPages, ...detailPages, ...articlePages];
+const specificationPages = new Map([
+  ["services/used-oil-collection", 0],
+  ["products/re-refined-base-oil", 1],
+  ["products/light-diesel-oil", 2],
+  ["products/distilled-fuel-oil", 3],
+]);
+pages.push({
+  path: "products/distilled-fuel-oil",
+  active: "products",
+  title: "Distilled Fuel Oil (DFO) Proposed Specifications | Rerol Refinery",
+  description: "Provisional DFO engineering targets, test methods and contaminant screening references. Laboratory validation pending; confirm the actual batch COA.",
+  kicker: "Distilled fuel oil (DFO)",
+  headline: "Provisional fuel targets for industrial heating.",
+  intro: "A proposed Rerol grade for furnace and burner use, not automotive fuel. Review the engineering targets and confirm fuel classification, permitted end use and actual batch results before release.",
+  heroImage: "/assets/product-furnace.jpg",
+  primaryLabel: "Discuss DFO requirements",
+  primaryHref: "/contact/",
+  secondaryLabel: "Call our team",
+  body: "",
+});
+for (const page of pages) {
+  if (specificationPages.has(page.path)) {
+    page.body = specificationSection(specificationPages.get(page.path)) + page.body;
+  }
+  if (["products", "services/testing-and-documentation"].includes(page.path)) {
+    page.body = specificationLinks() + page.body;
+  }
+}
 
 for (const page of pages) {
   const destination = path.join(outputDirectory, ...page.path.split("/"));
