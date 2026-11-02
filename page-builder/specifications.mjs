@@ -579,10 +579,9 @@ export function specificationSection(index) {
   return `<section class="page-section page-section--mist product-specifications" id="specifications" aria-label="Technical specifications">
     <p class="eyebrow">Technical specifications · Rev 0.1 · 02 Nov 2026</p>
     <h2>${escape(blocks[1].text)}</h2>
-    <p class="specification-status"><strong>Proposed limits / laboratory validation pending.</strong> These are reference requirements and proposed targets, not certified or measured batch results. Confirm the actual batch COA, applicable standards and permit conditions before acceptance or use.</p>
     ${blocks.map((block, i) => {
       if (block.type === "table") {
-        if (block.rows.length === 1) return `<p class="specification-meta">${block.rows[0].map(escape).join(" · ")}</p>`;
+        if (block.rows.length === 1) return `<p class="specification-meta">${block.rows[0].filter(value => !value.startsWith("STATUS ")).map(escape).join(" · ")}</p>`;
         return table(block.rows[0].map(escape), block.rows.slice(1).map(row => row.map(escape)));
       }
       if (i === 1) return "";
@@ -604,4 +603,3 @@ export function specificationLinks() {
     </ul>
   </section>`;
 }
-
