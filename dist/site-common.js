@@ -1,6 +1,7 @@
 (() => {
   const key = "rerol-analytics-preference";
-  const measurementId = "G-61WBSGCH0W";
+  const measurementId = document.querySelector("script[data-ga-id]")?.dataset.gaId;
+  if (!/^G-[A-Z0-9]+$/.test(measurementId || "")) return;
   let enabled = false;
   let panel;
   const readPreference = () => { try { return localStorage.getItem(key); } catch { return null; } };

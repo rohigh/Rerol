@@ -1,6 +1,6 @@
 export const origin = "https://rerolrefinery.com";
 export const verification = "jzJ5uVwFka5NfSJA4w-tgWqlqWCULB3LrJ0dDtIQHaI";
-export const analyticsId = "G-61WBSGCH0W";
+export const analyticsId = "G-GN2M85TE4F";
 export const escapeHtml = value => String(value).replaceAll("&amp;", "&").replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const labels = {
   about: "About", products: "Products", services: "Services", industries: "Industries Served",
@@ -58,7 +58,7 @@ export function metadataHead(page) {
     <meta name="twitter:image" content="${origin}/assets/social-card.png" />
     <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replaceAll("<", "\\u003c")}</script>
     <link rel="stylesheet" href="/site-common.css?v=1" />
-    <script src="/site-common.js?v=1" defer></script>
+    <script src="/site-common.js?v=2" data-ga-id="${analyticsId}" defer></script>
     <!-- SEO:end -->`;
 }
 export function enhanceHtml(html) {
