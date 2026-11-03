@@ -5,12 +5,12 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
-    { "source": "/home/:path*", "destination": "/", "permanent": true },
-    { "source": "/about-us/:path*", "destination": "/about/", "permanent": true },
-    { "source": "/furnace-oil/:path*", "destination": "/products/furnace-oil/", "permanent": true },
-    { "source": "/diesel-oil-ldo/:path*", "destination": "/products/light-diesel-oil/", "permanent": true },
-    { "source": "/base-oil-supply-high-quality/:path*", "destination": "/products/re-refined-base-oil/", "permanent": true },
-    { "source": "/used-oil-collection/:path*", "destination": "/services/used-oil-collection/", "permanent": true },
-    { "source": "/https-rerolrefinery-com-privacy-policy/:path*", "destination": "/privacy-policy/", "permanent": true }
+    { "source": "/home/", "destination": "/", "permanent": true },
+    { "source": "/about-us/", "destination": "/about/", "permanent": true },
+    { "source": "/furnace-oil/", "destination": "/products/furnace-oil/", "permanent": true },
+    { "source": "/diesel-oil-ldo/", "destination": "/products/light-diesel-oil/", "permanent": true },
+    { "source": "/base-oil-supply-high-quality/", "destination": "/products/re-refined-base-oil/", "permanent": true },
+    { "source": "/used-oil-collection/", "destination": "/services/used-oil-collection/", "permanent": true },
+    { "source": "/https-rerolrefinery-com-privacy-policy/", "destination": "/privacy-policy/", "permanent": true }
   ]
 }
