@@ -1,6 +1,7 @@
 export const origin = "https://rerolrefinery.com";
 export const verification = "jzJ5uVwFka5NfSJA4w-tgWqlqWCULB3LrJ0dDtIQHaI";
 export const analyticsId = "G-GN2M85TE4F";
+export const adsId = "AW-18532404050";
 export const escapeHtml = value => String(value).replaceAll("&amp;", "&").replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const labels = {
   about: "About", products: "Products", services: "Services", industries: "Industries Served",
@@ -58,12 +59,13 @@ export function metadataHead(page) {
     <meta name="twitter:image" content="${origin}/assets/social-card.png" />
     <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replaceAll("<", "\\u003c")}</script>
     <link rel="stylesheet" href="/site-common.css?v=1" />
-    <script src="/site-common.js?v=2" data-ga-id="${analyticsId}" defer></script>
+    <script src="/site-common.js?v=3" data-ga-id="${analyticsId}" data-ads-id="${adsId}" defer></script>
     <!-- SEO:end -->`;
 }
 export function enhanceHtml(html) {
   return html.replaceAll(/\/assets\/([a-z0-9-]+)\.(jpg|png)(\?[^"'\s)]*)?/g, (match, name, extension, query = "") =>
     name === "social-card" ? match : "/assets/" + name + ".webp" + query)
     .replace(/<img\b[^>]*rerol-logo-footer[^>]*>/g, tag => tag.includes('loading=') ? tag : tag.replace("<img", '<img loading="lazy" decoding="async"'))
-    .replaceAll('rel="icon" type="image/png"', 'rel="icon" type="image/webp"');
+    .replaceAll('rel="icon" type="image/png"', 'rel="icon" type="image/webp"')
+    .replaceAll('>Analytics preferences</button>', '>Privacy preferences</button>');
 }
