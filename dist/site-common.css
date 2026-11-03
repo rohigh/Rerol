@@ -1,0 +1,23 @@
+.breadcrumbs { margin: 0 0 1.4rem; color: #d4dce0; font-size: .78rem; line-height: 1.6; }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .35rem .6rem; padding: 0; margin: 0; list-style: none; }
+.breadcrumbs li { display: inline-flex; gap: .6rem; }
+.breadcrumbs li + li::before { content: "/"; color: #99a4ac; }
+.breadcrumbs a { text-decoration: none; }
+.breadcrumbs a:hover { color: #ff9800; }
+.breadcrumbs [aria-current] { color: #fff; }
+.card__image { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.text-button { appearance: none; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: .2em; }
+.site-footer .site-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 1.5rem; padding-block: 1.25rem; }
+.inner-footer__bottom { flex-wrap: wrap; }
+.privacy-content { max-width: 1000px; margin: auto; line-height: 1.8; }
+.privacy-content h2 { font-size: clamp(1.5rem,2.5vw,2.3rem); margin: 2.2rem 0 .8rem; }
+.privacy-content p { margin: .8rem 0; }
+.analytics-choice { position: fixed; z-index: 10002; right: 20px; bottom: 20px; width: min(420px, calc(100% - 40px)); padding: 22px; border: 1px solid #56616a; border-radius: 18px; background: #171c20; color: #f4f5f6; box-shadow: 0 8px 30px #0005; font: 14px/1.6 Inter,Arial,sans-serif; }
+.analytics-choice h2 { margin: 0 0 8px; font-size: 18px; color: #fff; letter-spacing: normal; word-spacing: normal; }
+.analytics-choice p { margin: 0 0 12px; color: #d4dce0; }
+.analytics-choice a { color: #75d7f7; }
+.analytics-choice__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.analytics-choice button { min-height: 44px; padding: 10px 16px; border: 1px solid #94a0a8; border-radius: 10px; background: transparent; color: #fff; font: inherit; cursor: pointer; }
+.analytics-choice button[data-choice="allow"] { background: #3fc5f4; color: #101418; border-color: #3fc5f4; }
+.analytics-choice button:focus-visible,.text-button:focus-visible { outline: 2px solid #ff8500; outline-offset: 3px; }
+@media(max-width:680px) { .analytics-choice { right: 12px; bottom: 12px; width: calc(100% - 24px); padding: 18px; } }

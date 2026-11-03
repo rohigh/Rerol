@@ -15,7 +15,7 @@ export const mainPages = [
       <section class="page-section">
         ${heading("Our story", "Built to close the industrial oil loop.", "We started Rerol to bring used oil back into a controlled, documented production cycle and give industrial buyers a more dependable source of fuel and base oil.")}
         <div class="split">
-          <div class="split__media"><img src="/assets/hero-refinery-dusk.jpg" alt="Industrial refinery operating at dusk" /></div>
+          <div class="split__media"><img src="/assets/hero-refinery-dusk.jpg" alt="Industrial refinery operating at dusk" loading="lazy" decoding="async" width="1200" height="800" /></div>
           <div class="split__copy">
             <p class="eyebrow">Why Rerol</p>
             <h2>A re-refiner, not simply a reseller.</h2>

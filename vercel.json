@@ -3,5 +3,14 @@
   "buildCommand": "node build-pages.mjs",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/home/:path*", "destination": "/", "permanent": true },
+    { "source": "/about-us/:path*", "destination": "/about/", "permanent": true },
+    { "source": "/furnace-oil/:path*", "destination": "/products/furnace-oil/", "permanent": true },
+    { "source": "/diesel-oil-ldo/:path*", "destination": "/products/light-diesel-oil/", "permanent": true },
+    { "source": "/base-oil-supply-high-quality/:path*", "destination": "/products/re-refined-base-oil/", "permanent": true },
+    { "source": "/used-oil-collection/:path*", "destination": "/services/used-oil-collection/", "permanent": true },
+    { "source": "/https-rerolrefinery-com-privacy-policy/:path*", "destination": "/privacy-policy/", "permanent": true }
+  ]
 }

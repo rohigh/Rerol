@@ -65,7 +65,7 @@ export const articlePages = [
       <h2>Review the properties that matter</h2><ul><li>Kinematic viscosity and viscosity index.</li><li>Sulphur and saturates.</li><li>Flash point, colour and visible impurities.</li><li>Variation across more than one batch.</li></ul>
       <h2>Be careful with Group II claims</h2><p>The standard defines Group II using at least 90% saturates and no more than 0.03% sulphur. Ask for a report that proves both before accepting the label or price.</p>
       <h2>Five supplier questions</h2><ol><li>Which grade is this and can I see the current COA?</li><li>How do key results vary across batches?</li><li>Where and how is the oil re-refined?</li><li>What documentation accompanies the order?</li><li>Can I validate a sample in my own blend?</li></ol>
-      <p class="source-list">Source: <a href="https://www.services.bis.gov.in/tmp/PCD34422088_25042024_1.pdf" target="_blank" rel="noreferrer">Bureau of Indian Standards, IS 18722 (Part 1):2024</a>.</p>
+      <p class="source-list">Reference: <a href="https://www.services.bis.gov.in/tmp/weekly_bulletin_2_519.pdf" target="_blank" rel="noreferrer">BIS publication bulletin listing IS 18722 (Part 1):2024</a>. Ask BIS for the current complete standard before making a conformity claim.</p>
     `, "Request a base oil sample")}
     ${cta("Validate a sample before the first large order.", "Ask for a representative sample and current COA for technical review.", "Request a sample", "/contact/")}`,
   },

@@ -1,0 +1,12 @@
+{
+  "name": "rerol-static-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build-pages.mjs",
+    "assets": "node scripts/prepare-assets.mjs"
+  },
+  "devDependencies": {
+    "sharp": "0.35.5"
+  }
+}

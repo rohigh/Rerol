@@ -1,3 +1,4 @@
+import { metadataHead, breadcrumbs, enhanceHtml, escapeHtml } from "./seo.mjs";
 export const phone = "+91 91766 42399";
 export const phoneHref = "tel:+919176642399";
 export const whatsappHref = "https://wa.me/919176642399?text=Hi%20Rerol%2C%20I%27d%20like%20today%27s%20rate.%20Product%3A%20___%20Quantity%3A%20___%20Delivery%20location%3A%20___";
@@ -69,7 +70,8 @@ export function card(index, title, text, href = "", label = "Learn more") {
 }
 
 export function featureCard({ image, eyebrow, title, text, href, label = "Explore" }) {
-  return `<article class="card card--feature" style="background-image:url('${image}')">
+  return `<article class="card card--feature">
+    <img class="card__image" src="${image}" alt="" loading="lazy" decoding="async" width="1200" height="800" />
     <span class="card__index">${eyebrow}</span>
     <h3>${title}</h3>
     <p>${text}</p>
@@ -139,6 +141,7 @@ export function contactForm() {
     </label>
     <label>Delivery or pickup location<input name="location" autocomplete="address-level2" /></label>
     <label class="page-form__full">Message<textarea name="message"></textarea></label>
+    <p class="page-form__full">Continuing prepares a WhatsApp draft for you to review and send. See our <a href="/privacy-policy/">privacy notice</a>.</p>
     <button class="button button--orange" type="submit">Continue on WhatsApp <span aria-hidden="true">↗</span></button>
     <p class="page-form__status" data-form-status aria-live="polite">Required fields are marked *</p>
   </form>`;
@@ -202,6 +205,8 @@ function footer() {
     </div>
     <div class="inner-footer__bottom">
       <span>© <span data-current-year></span> Rerol Refinery Private Limited</span>
+      <a href="/privacy-policy/">Privacy notice</a>
+      <button class="text-button" type="button" data-analytics-preferences>Analytics preferences</button>
       <a href="/contact/">Contact our team <span aria-hidden="true">↗</span></a>
     </div>
     <nav class="mobile-contact-bar" aria-label="Quick contact">
@@ -213,22 +218,21 @@ function footer() {
 
 export function renderPage(page) {
   const heroImage = page.heroImage || "/assets/hero-refinery-dusk.jpg";
-  const canonicalPath = page.path === "" ? "/" : `/${page.path}/`;
-  return `<!doctype html>
+  return enhanceHtml(`<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="${page.description}" />
-    <title>${page.title}</title>
-    <link rel="canonical" href="https://rerolrefinery.com${canonicalPath}" />
+    <meta name="description" content="${escapeHtml(page.description)}" />
+    <title>${escapeHtml(page.title)}</title>
+    ${metadataHead(page)}
     <link rel="icon" type="image/png" href="/assets/rerol-logo.png" />
     <link rel="prefetch" href="/" />
     <link rel="prefetch" as="image" href="/assets/hero-refinery-dusk.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/pages.css?v=10" />
+    <link rel="stylesheet" href="/pages.css?v=11" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -237,6 +241,7 @@ export function renderPage(page) {
       <section class="page-hero" style="--hero-image:url('${heroImage}')">
         <div class="page-hero__dots" aria-hidden="true"></div>
         <div class="page-hero__inner">
+          ${breadcrumbs(page)}
           <p class="eyebrow">${page.kicker}</p>
           <h1>${page.headline}</h1>
           <div class="page-hero__lower">
@@ -253,5 +258,5 @@ export function renderPage(page) {
     ${footer()}
     <script src="/pages.js?v=1" defer></script>
   </body>
-</html>`;
+</html>`);
 }

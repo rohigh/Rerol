@@ -452,11 +452,7 @@
       `Message: ${data.get("message") || "No additional message"}`,
     ];
     const url = `https://wa.me/919176642399?text=${encodeURIComponent(lines.join("\n"))}`;
-    const link = document.createElement("a");
-    link.href = url;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.click();
+    window.open(url, "_blank", "noopener,noreferrer");
 
     status.textContent = "Your WhatsApp enquiry is ready to send.";
     status.classList.add("is-success");
