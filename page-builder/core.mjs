@@ -1,64 +1,9 @@
 import { metadataHead, breadcrumbs, enhanceHtml, escapeHtml } from "./seo.mjs";
+import { navigationMarkup } from './navigation.mjs';
 export const phone = "+91 91766 42399";
 export const phoneHref = "tel:+919176642399";
 export const whatsappHref = "https://wa.me/919176642399?text=Hi%20Rerol%2C%20I%27d%20like%20today%27s%20rate.%20Product%3A%20___%20Quantity%3A%20___%20Delivery%20location%3A%20___";
 
-const navItems = [
-  [
-    "home",
-    "Home",
-    "/"
-  ],
-  [
-    "about",
-    "About",
-    "/about/"
-  ],
-  [
-    "products",
-    "Products",
-    "/products/"
-  ],
-  [
-    "services",
-    "Services",
-    "/services/"
-  ],
-  [
-    "industries",
-    "Industries Served",
-    "/industries/"
-  ],
-  [
-    "collection",
-    "Used Oil Collection",
-    "/services/used-oil-collection/"
-  ],
-  [
-    "blog",
-    "Blog",
-    "/blog/"
-  ],
-  [
-    "quality",
-    "Quality and Testing",
-    "/services/testing-and-documentation/"
-  ],
-  [
-    "gallery",
-    "Gallery",
-    "/gallery/"
-  ],
-  [
-    "contact",
-    "Contact",
-    "/contact/"
-  ]
-];
-
-const linkMarkup = (active) => navItems
-  .map(([key, label, href]) => `<a href="${href}"${key === active ? ' aria-current="page"' : ""}>${label}</a>`)
-  .join("\n");
 
 export function card(index, title, text, href = "", label = "Learn more") {
   return `<article class="card">
@@ -124,6 +69,7 @@ export function contactForm() {
         <option>Furnace oil</option>
         <option>Light diesel oil (LDO)</option>
         <option>Re-refined base oil</option>
+        <option>Distilled fuel oil (DFO)</option>
         <option>Sell my used oil</option>
         <option>EPR support</option>
         <option>Cost and supply planning</option>
@@ -141,8 +87,8 @@ export function contactForm() {
     </label>
     <label>Delivery or pickup location<input name="location" autocomplete="address-level2" /></label>
     <label class="page-form__full">Message<textarea name="message"></textarea></label>
-    <p class="page-form__full">Continuing prepares a WhatsApp draft for you to review and send. See our <a href="/privacy-policy/">privacy notice</a>.</p>
-    <button class="button button--orange" type="submit">Continue on WhatsApp <span aria-hidden="true">↗</span></button>
+    <label class="page-form__full"><span><input type="checkbox" name="consent" required /> I agree that Rerol may contact me about this enquiry.</span></label>
+    <button class="button button--orange" type="submit">Submit enquiry <span aria-hidden="true">↗</span></button>
     <p class="page-form__status" data-form-status aria-live="polite">Required fields are marked *</p>
   </form>`;
 }
@@ -156,18 +102,18 @@ export function articleAside(label = "Discuss your requirement") {
   </aside>`;
 }
 
-function header(active) {
+function header(active, route) {
   return `<header class="inner-header">
     <a class="inner-brand" href="/" aria-label="Rerol Refinery home">
       <img src="/assets/rerol-logo.png" alt="" width="40" height="40" />
       <span>Rerol Refinery</span>
     </a>
-    <nav class="inner-nav" aria-label="Primary navigation">${linkMarkup(active)}</nav>
+    <nav class="inner-nav" aria-label="Primary navigation">${navigationMarkup(route)}</nav>
     <div class="inner-header__actions">
       <a class="quote-link" href="/contact/">Get a quote</a>
       <details class="mobile-nav">
         <summary aria-label="Open navigation">Menu</summary>
-        <nav class="mobile-nav__panel" aria-label="Mobile navigation">${linkMarkup(active)}</nav>
+        <nav class="mobile-nav__panel" aria-label="Mobile navigation">${navigationMarkup(route)}</nav>
       </details>
     </div>
   </header>`;
@@ -193,6 +139,7 @@ function footer() {
         <a href="/products/furnace-oil/">Furnace oil</a>
         <a href="/products/light-diesel-oil/">LDO</a>
         <a href="/products/re-refined-base-oil/">Base oil</a>
+        <a href="/products/distilled-fuel-oil/">DFO</a>
         <a href="/services/used-oil-collection/">Used oil collection</a>
       </nav>
       <div class="footer-column">
@@ -236,7 +183,7 @@ export function renderPage(page) {
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    ${header(page.active)}
+    ${header(page.active, `/${page.path}/`)}
     <main class="page-main" id="main-content">
       <section class="page-hero" style="--hero-image:url('${heroImage}')">
         <div class="page-hero__dots" aria-hidden="true"></div>
@@ -256,7 +203,7 @@ export function renderPage(page) {
       ${page.body}
     </main>
     ${footer()}
-    <script src="/pages.js?v=1" defer></script>
+    <script src="/pages.js?v=2" defer></script>
   </body>
 </html>`);
 }

@@ -1,4 +1,39 @@
 .breadcrumbs { margin: 0 0 1.4rem; color: #d4dce0; font-size: .78rem; line-height: 1.6; }
+.nav-group { position: relative; }
+.enquiry-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden; }
+.enquiry-disclosure { grid-column: 1 / -1; font-size: .8rem; line-height: 1.6; margin-bottom: 1rem; }
+[data-form-status] a { display: inline-block; text-decoration: underline; text-underline-offset: .2em; }
+form[aria-busy="true"] button[type="submit"] { cursor: wait; opacity: .65; }
+.nav-group > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: .4rem; color: inherit; }
+.nav-group > summary::-webkit-details-marker { display: none; }
+.nav-group > summary::before, .nav-group > summary::after { display: none; }
+.nav-chevron { font-size: .9em; margin-left: auto; }
+.nav-group[open] > summary .nav-chevron { transform: rotate(180deg); }
+.nav-group > summary:focus-visible { outline: 2px solid #ff8500; outline-offset: 4px; }
+.nav-submenu { display: grid; gap: .2rem; }
+.nav-submenu a { display: block; padding: .7rem .85rem; text-decoration: none; white-space: normal; font: 500 .85rem/1.4 Inter,Arial,sans-serif; letter-spacing: normal; word-spacing: normal; }
+.nav-submenu a:hover, .nav-submenu a:focus-visible { background: #ff85001a; }
+.primary-nav .nav-submenu a, .inner-nav .nav-submenu a { padding: .7rem .85rem; font-size: .85rem; white-space: normal; }
+.nav-group[data-current-group] > summary { color: #ad5200; }
+.primary-nav .nav-group[data-current-group] > summary, .inner-nav .nav-group[data-current-group] > summary { color: #ad5200; }
+@media(min-width:1101px) {
+  .primary-nav, .inner-nav { justify-content: space-evenly; gap: 1rem; }
+  .primary-nav .nav-group > summary, .inner-nav .nav-group > summary { padding: .75rem 0; font: 600 .8rem/1.4 Inter,Arial,sans-serif; color: #424b50; white-space: nowrap; }
+  .primary-nav > a, .inner-nav > a { font-size: .8rem; }
+  .primary-nav .nav-submenu, .inner-nav .nav-submenu { position: absolute; top: calc(100% + 10px); left: -14px; min-width: 240px; padding: .5rem; border: 1px solid #d9dfe2; border-radius: 16px; background: #f4f5f6; color: #20262a; box-shadow: 0 16px 40px #0002; z-index: 20; }
+}
+@media(min-width:1101px) and (max-width:1399px) {
+  .site-header .nav-shell { display: flex; border-radius: 999px; }
+  .inner-header.inner-header { grid-template-columns: auto 1fr auto; border-radius: 999px; }
+  .inner-header .inner-nav { grid-column: auto; grid-row: auto; }
+  .inner-header .inner-header__actions { grid-column: auto; grid-row: auto; }
+}
+.nav-overlay .nav-submenu { margin: .5rem 0 .75rem; padding-left: 1rem; border-left: 2px solid #ff8500; }
+.nav-overlay .nav-submenu a { color: #f4f5f6; font-size: 1rem; }
+.nav-overlay .nav-group[data-current-group] > summary { color: #ff9800; }
+.mobile-nav__panel .nav-group > summary { padding: .7rem; font: 600 .9rem/1.4 Inter,Arial,sans-serif; width: auto; height: auto; border: 0; border-radius: 0; }
+.mobile-nav__panel .nav-submenu { padding-left: .7rem; border-left: 2px solid #ff8500; }
+.mobile-nav__panel .nav-submenu a { font-size: .8rem; }
 .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .35rem .6rem; padding: 0; margin: 0; list-style: none; }
 .breadcrumbs li { display: inline-flex; gap: .6rem; }
 .breadcrumbs li + li::before { content: "/"; color: #99a4ac; }
@@ -20,4 +55,10 @@
 .analytics-choice button { min-height: 44px; padding: 10px 16px; border: 1px solid #94a0a8; border-radius: 10px; background: transparent; color: #fff; font: inherit; cursor: pointer; }
 .analytics-choice button[data-choice="allow"] { background: #3fc5f4; color: #101418; border-color: #3fc5f4; }
 .analytics-choice button:focus-visible,.text-button:focus-visible { outline: 2px solid #ff8500; outline-offset: 3px; }
-@media(max-width:680px) { .analytics-choice { right: 12px; bottom: 12px; width: calc(100% - 24px); padding: 18px; } }
+@media(max-width:680px) {
+  .analytics-choice { box-sizing: border-box; right: 8px; bottom: max(8px, env(safe-area-inset-bottom)); width: calc(100% - 16px); padding: 12px; border-radius: 14px; font-size: 12px; line-height: 1.4; max-height: calc(100dvh - 24px); overflow-y: auto; }
+  .analytics-choice h2 { font-size: 15px; margin-bottom: 5px; }
+  .analytics-choice p { margin-bottom: 9px; }
+  .analytics-choice__actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .analytics-choice button { padding: 7px 4px; min-height: 44px; letter-spacing: normal; word-spacing: normal; }
+}

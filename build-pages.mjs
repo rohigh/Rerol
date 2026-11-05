@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 import { renderPage } from "./page-builder/core.mjs";
+import { navigationMarkup } from './page-builder/navigation.mjs';
 import { mainPages } from "./page-builder/pages-main.mjs";
 import { detailPages } from "./page-builder/pages-details.mjs";
 import { articlePages } from "./page-builder/pages-articles.mjs";
@@ -65,6 +66,8 @@ const notFound = {
 await writeFile(path.join(outputDirectory, "404.html"), renderPage(notFound), "utf8");
 const homePath = path.join(outputDirectory, "index.html");
 let homeHtml = await readFile(homePath, "utf8");
+homeHtml = homeHtml.replace(/(<nav class="primary-nav"[^>]*>)[\s\S]*?<\/nav>/, `$1${navigationMarkup('/')}</nav>`);
+homeHtml = homeHtml.replace(/(<ol class="menu-list"[^>]*>)[\s\S]*?<\/ol>/, `$1${navigationMarkup('/', true)}</ol>`);
 homeHtml = homeHtml.replace(/<!-- SEO:start -->[\s\S]*?<!-- SEO:end -->\s*/g, "");
 const homeMeta = {
   path: "", title: homeHtml.match(/<title>(.*?)<\/title>/s)[1],
@@ -75,6 +78,6 @@ if (!homeHtml.includes('href="/privacy-policy/"')) {
   homeHtml = homeHtml.replace('<span>Chennai, Tamil Nadu</span>', '<span>Chennai, Tamil Nadu</span><a href="/privacy-policy/">Privacy notice</a><button class="text-button" type="button" data-analytics-preferences>Analytics preferences</button>');
   homeHtml = homeHtml.replace('I agree that Rerol may contact me by phone, WhatsApp or email about this enquiry.', 'I agree that Rerol may contact me by phone, WhatsApp or email about this enquiry, as described in the <a href="/privacy-policy/">privacy notice</a>.');
 }
-await writeFile(homePath, enhanceHtml(homeHtml), "utf8");
+await writeFile(homePath, enhanceHtml(homeHtml).replace(/[ \t]+$/gm, ""), "utf8");
 
 console.log(`Built ${pages.length} pages and sitemap.xml`);

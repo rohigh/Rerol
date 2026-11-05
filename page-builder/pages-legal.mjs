@@ -1,3 +1,4 @@
+import { captureEnabled } from './enquiries.mjs';
 export const legalPages = [{
   path: "privacy-policy", active: "", title: "Privacy Notice | Rerol Refinery",
   description: "How the Rerol website handles enquiries, WhatsApp handoffs, hosting information and optional Google Analytics, and how to contact us about your information.",
@@ -10,7 +11,7 @@ export const legalPages = [{
     <h2>Information you choose to share</h2>
     <p>Enquiry forms ask for your name, phone number and requirement. Depending on the form, you can also provide your company, email, monthly quantity, delivery or pickup location and a message. Please share only information needed to discuss your requirement.</p>
     <h2>How enquiries work</h2>
-    <p>The website prepares a WhatsApp message from the details you enter. Continuing opens WhatsApp with that draft; you decide whether to send it. The form does not email the enquiry or store it in a website database. WhatsApp processes information under its own privacy policy when you use its service.</p>
+    ${captureEnabled ? '<p>Submitting an enquiry sends the details you enter to Web3Forms, our form-processing provider, for storage and delivery to the Rerol team. We use those details to respond to your enquiry. After confirmation, the website opens an optional WhatsApp draft; you decide whether to send it. An enquiry can reach Rerol even if you do not send the WhatsApp message. If submission cannot be confirmed, the page tells you and lets you retry or contact us directly.</p><p>Web3Forms processes submissions under its <a href="https://web3forms.com/privacy" target="_blank" rel="noreferrer">privacy policy</a>. WhatsApp processes information under its own privacy policy when you use its service.</p>' : '<p>The website prepares a WhatsApp message from the details you enter. Continuing opens WhatsApp with that draft; you decide whether to send it. The form does not email the enquiry or store it in a website database. WhatsApp processes information under its own privacy policy when you use its service.</p>'}
     <p>We use information you send to respond, discuss products and specifications, prepare quotations and coordinate requested services. Information needed for an ongoing enquiry, transaction or applicable record-keeping requirement may be retained for that purpose.</p>
     <h2>Hosting and external services</h2>
     <p>Vercel hosts this website and may process technical request information such as IP address, request time, browser details and the page requested to deliver and secure the service. Google Fonts supplies website fonts. Links to WhatsApp, Maps and reference websites lead to services with their own privacy practices.</p>

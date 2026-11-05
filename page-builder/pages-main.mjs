@@ -202,26 +202,16 @@ export const mainPages = [
     path: "gallery",
     active: "gallery",
     title: "Inside Rerol Refinery | Plant, Lab and Fleet Photos",
-    description: "A gallery framework for verified photos from Rerol's re-refining plant, testing lab, storage and delivery operations.",
+    description: "Get to know Rerol's operations and contact our team to arrange a plant visit.",
     kicker: "Gallery",
-    headline: "See where your fuel is made.",
-    intro: "This page is reserved for verified photographs from Rerol's own plant, lab, collection operations, delivery fleet and team. Stock images are intentionally not presented as company facilities.",
+    headline: "A closer look at Rerol.",
+    intro: "Our operations gallery is coming soon. In the meantime, speak with our team about our process, testing and supply services.",
     heroImage: "/assets/hero-refinery-dusk.jpg",
     primaryLabel: "Book a plant visit",
     body: `
       <section class="page-section">
-        ${heading("Photo plan", "Real operations, documented honestly.", "These slots are ready for the client's own photographs. Each image should show a real Rerol facility, person, vehicle or event.")}
-        <div class="gallery-grid">
-          <article class="gallery-placeholder"><span>Plant</span><h3>Wide view of the re-refining plant</h3></article>
-          <article class="gallery-placeholder"><span>Process</span><h3>Distillation or processing unit</h3></article>
-          <article class="gallery-placeholder"><span>Storage</span><h3>Labelled storage and dispatch area</h3></article>
-          <article class="gallery-placeholder"><span>Laboratory</span><h3>Technician testing a batch sample</h3></article>
-          <article class="gallery-placeholder"><span>Quality</span><h3>Used oil and finished oil samples</h3></article>
-          <article class="gallery-placeholder"><span>Documentation</span><h3>Certificate of Analysis preparation</h3></article>
-          <article class="gallery-placeholder"><span>Collection</span><h3>Sealed used oil pickup</h3></article>
-          <article class="gallery-placeholder"><span>Delivery</span><h3>Tanker dispatch to a customer</h3></article>
-          <article class="gallery-placeholder"><span>Team</span><h3>The people behind Rerol</h3></article>
-        </div>
+        ${heading("Explore Rerol", "Get to know our process.", "Learn how recovered oil is processed, how batches are tested and how we support your supply requirements.")}
+        <p><a class="button button--primary" href="/services/testing-and-documentation/">Explore quality and testing</a></p>
       </section>
       ${cta("Want to see the process in person?", "Plant visits are arranged by appointment. Contact the team to discuss a suitable date.", "Book a plant visit", "/contact/")}
     `,

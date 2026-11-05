@@ -1,0 +1,13 @@
+{
+  "original": {
+    "requests": 20,
+    "bytes": 157784,
+    "gzipBytes": 38073
+  },
+  "bundled": {
+    "requests": 1,
+    "bytes": 65504,
+    "gzipBytes": 19237
+  },
+  "note": "Build-time transfer comparison; not a browser timing or frame-rate measurement."
+}

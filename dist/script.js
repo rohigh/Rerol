@@ -35,7 +35,7 @@
     overlay.style.setProperty("--reveal-y", `${y}px`);
   };
 
-  const focusableItems = () => [menuButton, ...overlayLinks];
+  const focusableItems = () => [menuButton, ...[...overlay.querySelectorAll('a[href], summary')].filter(item => item.getClientRects().length)];
 
   const openMenu = () => {
     if (isOpen || isClosing) return;
@@ -167,7 +167,7 @@
 (() => {
   const loadPatternWaves = () => {
     const start = () => {
-      import("./pattern-waves.js").catch(() => {
+      import("./pattern-waves.bundle.js?v=1").catch(() => {
         const layer = document.querySelector("[data-pattern-waves]");
         if (layer) layer.dataset.patternWaves = "unsupported";
       });
@@ -424,37 +424,4 @@
   const year = document.querySelector("[data-current-year]");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  const form = document.querySelector("[data-quote-form]");
-  if (!form) return;
-
-  const status = form.querySelector("[data-form-status]");
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    status.classList.remove("is-error", "is-success");
-
-    if (!form.checkValidity()) {
-      status.textContent = "Please fill in your name, phone and what you need.";
-      status.classList.add("is-error");
-      form.reportValidity();
-      return;
-    }
-
-    const data = new FormData(form);
-    const lines = [
-      "Hi Rerol, I'd like to send an enquiry.",
-      `Name: ${data.get("name")}`,
-      `Phone: ${data.get("phone")}`,
-      `Email: ${data.get("email") || "Not provided"}`,
-      `Requirement: ${data.get("requirement")}`,
-      `Monthly quantity: ${data.get("quantity") || "Not specified"}`,
-      `Location: ${data.get("location") || "Not specified"}`,
-      `Message: ${data.get("message") || "No additional message"}`,
-    ];
-    const url = `https://wa.me/919176642399?text=${encodeURIComponent(lines.join("\n"))}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-
-    status.textContent = "Your WhatsApp enquiry is ready to send.";
-    status.classList.add("is-success");
-  });
 })();

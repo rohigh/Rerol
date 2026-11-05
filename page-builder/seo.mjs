@@ -1,3 +1,6 @@
+import { readFileSync } from 'node:fs';
+import { enquiryAccessKey, captureEnabled } from './enquiries.mjs';
+const responsiveImages = JSON.parse(readFileSync(new URL('../dist/assets/responsive-images.json', import.meta.url), 'utf8'));
 export const origin = "https://rerolrefinery.com";
 export const verification = "jzJ5uVwFka5NfSJA4w-tgWqlqWCULB3LrJ0dDtIQHaI";
 export const analyticsId = "G-GN2M85TE4F";
@@ -41,6 +44,9 @@ export function metadataHead(page) {
     itemListElement: breadcrumbItems(page).map((item, i) => ({ "@type": "ListItem", position: i + 1, name: item.name, item: origin + item.url }))
   });
   return `<!-- SEO:start -->
+    <meta name="rerol-enquiry-access-key" content="${escapeHtml(enquiryAccessKey)}" />
+    <script src="/enquiries.js?v=2" defer></script>
+    <script src="/navigation.js?v=1" defer></script>
     ${page.noindex ? '<meta name="robots" content="noindex, follow" />' : `<link rel="canonical" href="${url}" />`}
     <meta name="google-site-verification" content="${verification}" />
     <meta property="og:type" content="website" />
@@ -58,14 +64,30 @@ export function metadataHead(page) {
     <meta name="twitter:description" content="${escapeHtml(page.description)}" />
     <meta name="twitter:image" content="${origin}/assets/social-card.png" />
     <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replaceAll("<", "\\u003c")}</script>
-    <link rel="stylesheet" href="/site-common.css?v=1" />
-    <script src="/site-common.js?v=3" data-ga-id="${analyticsId}" data-ads-id="${adsId}" defer></script>
+    <link rel="stylesheet" href="/site-common.css?v=3" />
+    <script src="/site-common.js?v=4" data-ga-id="${analyticsId}" data-ads-id="${adsId}" defer></script>
     <!-- SEO:end -->`;
 }
 export function enhanceHtml(html) {
-  return html.replaceAll(/\/assets\/([a-z0-9-]+)\.(jpg|png)(\?[^"'\s)]*)?/g, (match, name, extension, query = "") =>
+  return html.replace(/(<form\b[^>]*data-(?:quote|whatsapp)-form[^>]*>)(?:<!-- enquiry-fields -->[\s\S]*?<!-- \/enquiry-fields -->)?/g, (_match, formTag) => {
+    let tag = captureEnabled ? formTag.replace(/\snovalidate\b/, '') : formTag;
+    if (captureEnabled && !/\smethod=/.test(tag)) tag = tag.replace('>', ' method="POST">');
+    if (captureEnabled && !/\saction=/.test(tag)) tag = tag.replace('>', ' action="https://api.web3forms.com/submit">');
+    const keyField = captureEnabled ? `<input type="hidden" name="access_key" value="${escapeHtml(enquiryAccessKey)}" />` : '';
+    return `${tag}<!-- enquiry-fields -->${keyField}<label class="enquiry-honeypot" aria-hidden="true">Leave this field empty<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></label><p class="enquiry-disclosure">${captureEnabled ? 'Submitting sends your details to Rerol through Web3Forms. You can then continue on WhatsApp.' : 'Continuing prepares a WhatsApp draft for you to review and send.'} <a href="/privacy-policy/">Privacy notice</a>.</p><!-- /enquiry-fields -->`;
+  })
+    .replaceAll(/\/assets\/([a-z0-9-]+)\.(jpg|png)(\?[^"'\s)]*)?/g, (match, name, extension, query = "") =>
     name === "social-card" ? match : "/assets/" + name + ".webp" + query)
     .replace(/<img\b[^>]*rerol-logo-footer[^>]*>/g, tag => tag.includes('loading=') ? tag : tag.replace("<img", '<img loading="lazy" decoding="async"'))
-    .replaceAll('rel="icon" type="image/png"', 'rel="icon" type="image/webp"')
+    .replace(/<link\b[^>]*rel="(?:icon|apple-touch-icon)"[^>]*>\s*/g, '')
+    .replace('</head>', '<link rel="icon" href="/favicon.ico" sizes="32x32" />\n<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />\n<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />\n<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />\n</head>')
+    .replace(/<img\b[^>]*>/g, tag => {
+      const stem = tag.match(/src="(?:\.\/|\/)assets\/([a-z0-9-]+)\.webp/)?.[1];
+      const image = responsiveImages[stem];
+      if (!image) return tag;
+      let updated = tag.replace(/\s(?:srcset|sizes|width|height)="[^"]*"/g, '');
+      const sizes = stem === 'hero-refinery-dusk' ? '100vw' : '(max-width: 860px) 100vw, (max-width: 1400px) 60vw, 840px';
+      return updated.replace('<img', `<img width="${image.width}" height="${image.height}" srcset="${image.variants.map(v => `${v.src} ${v.width}w`).join(', ')}" sizes="${sizes}"`);
+    })
     .replaceAll('>Analytics preferences</button>', '>Privacy preferences</button>');
 }

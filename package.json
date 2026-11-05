@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build-pages.mjs",
+    "build": "node scripts/prepare-assets.mjs && node scripts/bundle-animation.mjs && node build-pages.mjs",
     "assets": "node scripts/prepare-assets.mjs"
   },
   "devDependencies": {
+    "esbuild": "^0.28.2",
     "sharp": "0.35.5"
   }
 }

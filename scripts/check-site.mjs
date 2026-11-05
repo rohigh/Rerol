@@ -26,7 +26,7 @@ for (const file of pages) {
       if (!["index.html", "404.html"].includes(relative) && !schema["@graph"]?.some(item => item["@type"] === "BreadcrumbList")) fail("missing breadcrumb schema");
     } catch { fail("invalid JSON-LD"); }
   }
-  if (!html.includes('src="/site-common.js?v=3"') || !html.includes('data-ga-id="G-GN2M85TE4F"') || !html.includes('data-ads-id="AW-18532404050"')) fail("missing configured measurement tags");
+  if (!html.includes('src="/site-common.js?v=4"') || !html.includes('data-ga-id="G-GN2M85TE4F"') || !html.includes('data-ads-id="AW-18532404050"')) fail("missing configured measurement tags");
   if (!html.includes('href="/privacy-policy/"')) fail("missing privacy link");
   for (const match of html.matchAll(/<img\b[^>]*>/g)) {
     images++;

@@ -59,7 +59,7 @@
     panel = document.createElement("section");
     panel.className = "analytics-choice";
     panel.setAttribute("aria-label", "Privacy preferences");
-    panel.innerHTML = '<h2>Analytics and advertising</h2><p>Google Analytics helps us understand visits. Google Ads helps measure advertising results. Choose which optional tools to allow. <a href="/privacy-policy/">Privacy notice</a></p><div class="analytics-choice__actions"><button type="button" data-choice="essential">Essential only</button><button type="button" data-choice="allow">Analytics only</button><button type="button" data-choice="all">Allow all</button></div>';
+    panel.innerHTML = '<h2>Analytics and advertising</h2><p>Choose whether to allow optional analytics and advertising cookies. <a href="/privacy-policy/">Privacy notice</a></p><div class="analytics-choice__actions"><button type="button" data-choice="essential">Essential only</button><button type="button" data-choice="allow">Analytics only</button><button type="button" data-choice="all">Allow all</button></div>';
     panel.addEventListener("click", event => {
       const button = event.target.closest("[data-choice]");
       if (!button) return;

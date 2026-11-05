@@ -1,0 +1,210 @@
+{
+  "hero-refinery-dusk": {
+    "width": 1800,
+    "height": 1202,
+    "variants": [
+      {
+        "width": 400,
+        "src": "/assets/hero-refinery-dusk-400.webp",
+        "bytes": 17362
+      },
+      {
+        "width": 800,
+        "src": "/assets/hero-refinery-dusk-800.webp",
+        "bytes": 54426
+      },
+      {
+        "width": 1200,
+        "src": "/assets/hero-refinery-dusk-1200.webp",
+        "bytes": 100636
+      },
+      {
+        "width": 1800,
+        "src": "/assets/hero-refinery-dusk.webp",
+        "bytes": 208026
+      }
+    ]
+  },
+  "product-base-oil": {
+    "width": 1400,
+    "height": 1108,
+    "variants": [
+      {
+        "width": 400,
+        "src": "/assets/product-base-oil-400.webp",
+        "bytes": 7864
+      },
+      {
+        "width": 800,
+        "src": "/assets/product-base-oil-800.webp",
+        "bytes": 24282
+      },
+      {
+        "width": 1200,
+        "src": "/assets/product-base-oil-1200.webp",
+        "bytes": 52990
+      },
+      {
+        "width": 1400,
+        "src": "/assets/product-base-oil.webp",
+        "bytes": 89750
+      }
+    ]
+  },
+  "product-furnace": {
+    "width": 1800,
+    "height": 1200,
+    "variants": [
+      {
+        "width": 400,
+        "src": "/assets/product-furnace-400.webp",
+        "bytes": 13788
+      },
+      {
+        "width": 800,
+        "src": "/assets/product-furnace-800.webp",
+        "bytes": 37320
+      },
+      {
+        "width": 1200,
+        "src": "/assets/product-furnace-1200.webp",
+        "bytes": 64622
+      },
+      {
+        "width": 1800,
+        "src": "/assets/product-furnace.webp",
+        "bytes": 123428
+      }
+    ]
+  },
+  "product-ldo": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "width": 400,
+        "src": "/assets/product-ldo-400.webp",
+        "bytes": 8466
+      },
+      {
+        "width": 800,
+        "src": "/assets/product-ldo-800.webp",
+        "bytes": 20068
+      },
+      {
+        "width": 1200,
+        "src": "/assets/product-ldo-1200.webp",
+        "bytes": 35052
+      },
+      {
+        "width": 1400,
+        "src": "/assets/product-ldo.webp",
+        "bytes": 49438
+      }
+    ]
+  },
+  "why-delivery": {
+    "width": 1800,
+    "height": 1200,
+    "variants": [
+      {
+        "width": 400,
+        "src": "/assets/why-delivery-400.webp",
+        "bytes": 11128
+      },
+      {
+        "width": 800,
+        "src": "/assets/why-delivery-800.webp",
+        "bytes": 29948
+      },
+      {
+        "width": 1200,
+        "src": "/assets/why-delivery-1200.webp",
+        "bytes": 52702
+      },
+      {
+        "width": 1800,
+        "src": "/assets/why-delivery.webp",
+        "bytes": 100888
+      }
+    ]
+  },
+  "why-plant": {
+    "width": 1800,
+    "height": 1350,
+    "variants": [
+      {
+        "width": 400,
+        "src": "/assets/why-plant-400.webp",
+        "bytes": 32376
+      },
+      {
+        "width": 800,
+        "src": "/assets/why-plant-800.webp",
+        "bytes": 119674
+      },
+      {
+        "width": 1200,
+        "src": "/assets/why-plant-1200.webp",
+        "bytes": 251416
+      },
+      {
+        "width": 1800,
+        "src": "/assets/why-plant.webp",
+        "bytes": 552836
+      }
+    ]
+  },
+  "why-quality": {
+    "width": 1800,
+    "height": 2700,
+    "variants": [
+      {
+        "width": 400,
+        "src": "/assets/why-quality-400.webp",
+        "bytes": 13060
+      },
+      {
+        "width": 800,
+        "src": "/assets/why-quality-800.webp",
+        "bytes": 32162
+      },
+      {
+        "width": 1200,
+        "src": "/assets/why-quality-1200.webp",
+        "bytes": 56206
+      },
+      {
+        "width": 1800,
+        "src": "/assets/why-quality.webp",
+        "bytes": 136740
+      }
+    ]
+  },
+  "why-support": {
+    "width": 1800,
+    "height": 1200,
+    "variants": [
+      {
+        "width": 400,
+        "src": "/assets/why-support-400.webp",
+        "bytes": 14814
+      },
+      {
+        "width": 800,
+        "src": "/assets/why-support-800.webp",
+        "bytes": 33864
+      },
+      {
+        "width": 1200,
+        "src": "/assets/why-support-1200.webp",
+        "bytes": 54826
+      },
+      {
+        "width": 1800,
+        "src": "/assets/why-support.webp",
+        "bytes": 101554
+      }
+    ]
+  }
+}
