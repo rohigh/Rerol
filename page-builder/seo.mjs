@@ -64,7 +64,7 @@ export function metadataHead(page) {
     <meta name="twitter:description" content="${escapeHtml(page.description)}" />
     <meta name="twitter:image" content="${origin}/assets/social-card.png" />
     <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replaceAll("<", "\\u003c")}</script>
-    <link rel="stylesheet" href="/site-common.css?v=3" />
+    <link rel="stylesheet" href="/site-common.css?v=5" />
     <script src="/site-common.js?v=4" data-ga-id="${analyticsId}" data-ads-id="${adsId}" defer></script>
     <!-- SEO:end -->`;
 }

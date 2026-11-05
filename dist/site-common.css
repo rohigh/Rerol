@@ -17,9 +17,14 @@ form[aria-busy="true"] button[type="submit"] { cursor: wait; opacity: .65; }
 .nav-group[data-current-group] > summary { color: #ad5200; }
 .primary-nav .nav-group[data-current-group] > summary, .inner-nav .nav-group[data-current-group] > summary { color: #ad5200; }
 @media(min-width:1101px) {
-  .primary-nav, .inner-nav { justify-content: space-evenly; gap: 1rem; }
-  .primary-nav .nav-group > summary, .inner-nav .nav-group > summary { padding: .75rem 0; font: 600 .8rem/1.4 Inter,Arial,sans-serif; color: #424b50; white-space: nowrap; }
-  .primary-nav > a, .inner-nav > a { font-size: .8rem; }
+  .site-header .nav-shell, .inner-header.inner-header { gap: clamp(1rem, 1.8vw, 1.75rem); }
+  .site-header .primary-nav, .inner-header .inner-nav { min-width: 0; align-items: center; justify-content: space-between; gap: clamp(.65rem, 1.15vw, 1.1rem); }
+  .site-header .primary-nav > a, .inner-header .inner-nav > a,
+  .primary-nav .nav-group > summary, .inner-nav .nav-group > summary { box-sizing: border-box; display: flex; align-items: center; min-height: 44px; padding: .65rem 0; font: 600 clamp(.875rem, 1.05vw, 1rem)/1.4 Inter,Arial,sans-serif; color: #424b50; white-space: nowrap; }
+  .site-header .header-cta, .inner-header .quote-link { font-size: .875rem; }
+  .site-header .primary-nav > a:hover, .site-header .primary-nav > a[aria-current="page"],
+  .inner-header .inner-nav > a:hover, .inner-header .inner-nav > a[aria-current="page"] { color: #ad5200; }
+  .primary-nav .nav-submenu a, .inner-nav .nav-submenu a { min-height: 44px; display: flex; align-items: center; font-size: .9rem; }
   .primary-nav .nav-submenu, .inner-nav .nav-submenu { position: absolute; top: calc(100% + 10px); left: -14px; min-width: 240px; padding: .5rem; border: 1px solid #d9dfe2; border-radius: 16px; background: #f4f5f6; color: #20262a; box-shadow: 0 16px 40px #0002; z-index: 20; }
 }
 @media(min-width:1101px) and (max-width:1399px) {
@@ -31,6 +36,18 @@ form[aria-busy="true"] button[type="submit"] { cursor: wait; opacity: .65; }
 .nav-overlay .nav-submenu { margin: .5rem 0 .75rem; padding-left: 1rem; border-left: 2px solid #ff8500; }
 .nav-overlay .nav-submenu a { color: #f4f5f6; font-size: 1rem; }
 .nav-overlay .nav-group[data-current-group] > summary { color: #ff9800; }
+/* Give links and disclosure summaries the same row layout. Inline links otherwise
+   retain the oversized line box from the original numbered overlay. */
+.nav-overlay .overlay-navigation { align-items: flex-start; flex: 1 0 auto; padding-block: 1rem 2rem; }
+.nav-overlay .menu-list { font-size: clamp(1.65rem, 4.5vw, 2.6rem); line-height: 1.25; gap: .25rem; }
+.nav-overlay .menu-list > li { display: block; flex: 0 0 auto; font-size: inherit; line-height: inherit; }
+.nav-overlay .menu-list .menu-link { box-sizing: border-box; display: flex; align-items: center; width: 100%; min-height: 56px; padding: .5rem 0; font: inherit; line-height: 1.25; }
+.nav-overlay .menu-link .nav-chevron { flex: 0 0 auto; margin-left: auto; padding-inline: .5rem; font-size: .7em; }
+.nav-overlay .nav-submenu { font: 500 1rem/1.5 Inter,Arial,sans-serif; }
+.nav-overlay .nav-submenu a { min-height: 44px; display: flex; align-items: center; }
+@media(max-width:1100px) {
+  .nav-overlay .nav-overlay__inner { padding-top: 7rem; }
+}
 .mobile-nav__panel .nav-group > summary { padding: .7rem; font: 600 .9rem/1.4 Inter,Arial,sans-serif; width: auto; height: auto; border: 0; border-radius: 0; }
 .mobile-nav__panel .nav-submenu { padding-left: .7rem; border-left: 2px solid #ff8500; }
 .mobile-nav__panel .nav-submenu a { font-size: .8rem; }
