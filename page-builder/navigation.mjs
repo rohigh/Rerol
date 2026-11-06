@@ -1,3 +1,13 @@
+const desktopLinks = [
+  ['Home', '/'], ['About', '/about/'], ['Products', '/products/'],
+  ['Services', '/services/'], ['Industries Served', '/industries/'],
+  ['Used Oil Collection', '/services/used-oil-collection/'], ['Blog', '/blog/'],
+  ['Quality & Testing', '/services/testing-and-documentation/'],
+  ['Gallery', '/gallery/'], ['Contact', '/contact/'],
+];
+export function desktopNavigationMarkup(route = '/') {
+  return desktopLinks.map(([label, href]) => `<a href="${href}"${route === href ? ' aria-current="page"' : ''}>${label}</a>`).join('\n');
+}
 export const navigation = [
   { label: 'Home', href: '/' },
   { label: 'Company', children: [['About Rerol', '/about/'], ['Blog', '/blog/'], ['Gallery', '/gallery/']] },

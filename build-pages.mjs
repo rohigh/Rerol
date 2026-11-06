@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 import { renderPage } from "./page-builder/core.mjs";
-import { navigationMarkup } from './page-builder/navigation.mjs';
+import { navigationMarkup, desktopNavigationMarkup } from './page-builder/navigation.mjs';
 import { mainPages } from "./page-builder/pages-main.mjs";
 import { detailPages } from "./page-builder/pages-details.mjs";
 import { articlePages } from "./page-builder/pages-articles.mjs";
@@ -66,7 +66,7 @@ const notFound = {
 await writeFile(path.join(outputDirectory, "404.html"), renderPage(notFound), "utf8");
 const homePath = path.join(outputDirectory, "index.html");
 let homeHtml = await readFile(homePath, "utf8");
-homeHtml = homeHtml.replace(/(<nav class="primary-nav"[^>]*>)[\s\S]*?<\/nav>/, `$1${navigationMarkup('/')}</nav>`);
+homeHtml = homeHtml.replace(/(<nav class="primary-nav"[^>]*>)[\s\S]*?<\/nav>/, `$1${desktopNavigationMarkup('/')}</nav>`);
 homeHtml = homeHtml.replace(/(<ol class="menu-list"[^>]*>)[\s\S]*?<\/ol>/, `$1${navigationMarkup('/', true)}</ol>`);
 homeHtml = homeHtml.replace(/<!-- SEO:start -->[\s\S]*?<!-- SEO:end -->\s*/g, "");
 const homeMeta = {

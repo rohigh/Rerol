@@ -159,7 +159,7 @@
   });
 
   window.addEventListener("resize", () => {
-    if (isOpen && window.innerWidth > 1100) finishClose();
+    if (isOpen && window.innerWidth >= 1024) finishClose();
     else if (isOpen) setRevealOrigin();
   });
 })();

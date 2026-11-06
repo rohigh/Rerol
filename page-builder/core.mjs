@@ -1,5 +1,5 @@
 import { metadataHead, breadcrumbs, enhanceHtml, escapeHtml } from "./seo.mjs";
-import { navigationMarkup } from './navigation.mjs';
+import { navigationMarkup, desktopNavigationMarkup } from './navigation.mjs';
 export const phone = "+91 91766 42399";
 export const phoneHref = "tel:+919176642399";
 export const whatsappHref = "https://wa.me/919176642399?text=Hi%20Rerol%2C%20I%27d%20like%20today%27s%20rate.%20Product%3A%20___%20Quantity%3A%20___%20Delivery%20location%3A%20___";
@@ -108,7 +108,7 @@ function header(active, route) {
       <img src="/assets/rerol-logo.png" alt="" width="40" height="40" />
       <span>Rerol Refinery</span>
     </a>
-    <nav class="inner-nav" aria-label="Primary navigation">${navigationMarkup(route)}</nav>
+    <nav class="inner-nav" aria-label="Primary navigation">${desktopNavigationMarkup(route)}</nav>
     <div class="inner-header__actions">
       <a class="quote-link" href="/contact/">Get a quote</a>
       <details class="mobile-nav">
