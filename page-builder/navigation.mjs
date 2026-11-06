@@ -1,5 +1,7 @@
 export function desktopNavigationMarkup(route = '/') {
-  return navigationMarkup(route).replaceAll('<details class="nav-group"', '<details name="desktop-navigation" class="nav-group"');
+  return navigationMarkup(route)
+    .replaceAll('<details class="nav-group"', '<details name="desktop-navigation" class="nav-group"')
+    .replaceAll('>⌄</span>', '><svg width="12" height="12" viewBox="0 0 12 12" fill="none" focusable="false"><path d="m3 4.5 3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>');
 }
 export const navigation = [
   { label: 'Home', href: '/' },

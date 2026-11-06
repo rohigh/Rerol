@@ -1,4 +1,40 @@
 (() => {
+  const desktopHover = window.matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine)');
+  const groups = [...document.querySelectorAll('.primary-nav .nav-group, .inner-nav .nav-group')];
+  groups.forEach(group => {
+    let closeTimer;
+    const cancelClose = () => clearTimeout(closeTimer);
+    group.addEventListener('pointerenter', event => {
+      if (!desktopHover.matches || event.pointerType !== 'mouse') return;
+      cancelClose();
+      groups.forEach(other => { if (other !== group) other.open = false; });
+      group.open = true;
+    });
+    group.addEventListener('pointerleave', () => {
+      if (!desktopHover.matches) return;
+      closeTimer = setTimeout(() => {
+        if (!group.contains(document.activeElement)) group.open = false;
+      }, 150);
+    });
+    group.addEventListener('focusin', cancelClose);
+    group.addEventListener('focusout', event => {
+      if (!group.contains(event.relatedTarget) && !group.matches(':hover')) group.open = false;
+    });
+    group.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      cancelClose();
+      group.open = false;
+      group.querySelector('summary').focus();
+      event.stopPropagation();
+    });
+  });
+  document.addEventListener('click', event => {
+    groups.forEach(group => { if (!group.contains(event.target)) group.open = false; });
+  });
+  desktopHover.addEventListener('change', () => groups.forEach(group => { group.open = false; }));
+})();
+
+(() => {
   const key = "rerol-analytics-preference";
   const tag = document.querySelector("script[data-ga-id]");
   const measurementId = tag?.dataset.gaId;
