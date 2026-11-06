@@ -1,12 +1,5 @@
-const desktopLinks = [
-  ['Home', '/'], ['About', '/about/'], ['Products', '/products/'],
-  ['Services', '/services/'], ['Industries Served', '/industries/'],
-  ['Used Oil Collection', '/services/used-oil-collection/'], ['Blog', '/blog/'],
-  ['Quality & Testing', '/services/testing-and-documentation/'],
-  ['Gallery', '/gallery/'], ['Contact', '/contact/'],
-];
 export function desktopNavigationMarkup(route = '/') {
-  return desktopLinks.map(([label, href]) => `<a href="${href}"${route === href ? ' aria-current="page"' : ''}>${label}</a>`).join('\n');
+  return navigationMarkup(route).replaceAll('<details class="nav-group"', '<details name="desktop-navigation" class="nav-group"');
 }
 export const navigation = [
   { label: 'Home', href: '/' },
